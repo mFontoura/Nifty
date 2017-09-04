@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class Nucleon : MonoBehaviour
-{
+namespace Atomic_Nucleus.Scripts {
+    [RequireComponent(typeof(Rigidbody))]
+    public class Nucleon : MonoBehaviour
+    {
 
-    public float attractionForce;
+        public float attractionForce;
 
-    private Rigidbody body;
+        private Rigidbody _body;
 
-    private void Awake(){
-        body = GetComponent<Rigidbody>();
-    }
+        private void Awake(){
+            _body = GetComponent<Rigidbody>();
+        }
 
-    private void FixedUpdate(){
-        body.AddForce(transform.localPosition * -attractionForce);
+        private void FixedUpdate(){
+            _body.AddForce(transform.localPosition * -attractionForce);
+        }
     }
 }

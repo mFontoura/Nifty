@@ -1,25 +1,27 @@
 ﻿using UnityEngine;
 
-public class NucleonSpawner : MonoBehaviour
-{
+namespace Atomic_Nucleus.Scripts {
+    public class NucleonSpawner : MonoBehaviour
+    {
 
-    public float timeBetweenSpawns;
-    public float spawnDistance;
-    public Nucleon[] nucleonPrefabs;
+        public float timeBetweenSpawns;
+        public float spawnDistance;
+        public Nucleon[] nucleonPrefabs;
 
-    private float timeSinceLastSpawn;
+        private float _timeSinceLastSpawn;
     
-    private void FixedUpdate(){
-        timeSinceLastSpawn += Time.deltaTime;
-        if (timeSinceLastSpawn >= timeBetweenSpawns){
-            timeSinceLastSpawn -= timeBetweenSpawns;
-            SpawnNucleon();
+        private void FixedUpdate(){
+            _timeSinceLastSpawn += Time.deltaTime;
+            if (_timeSinceLastSpawn >= timeBetweenSpawns){
+                _timeSinceLastSpawn -= timeBetweenSpawns;
+                SpawnNucleon();
+            }
         }
-    }
 
-    private void SpawnNucleon(){
-        Nucleon prefab = nucleonPrefabs[Random.Range(0, nucleonPrefabs.Length)];
-        Nucleon spawn = Instantiate(prefab);
-        spawn.transform.localPosition = Random.onUnitSphere * spawnDistance;
+        private void SpawnNucleon(){
+            Nucleon prefab = nucleonPrefabs[Random.Range(0, nucleonPrefabs.Length)];
+            Nucleon spawn = Instantiate(prefab);
+            spawn.transform.localPosition = Random.onUnitSphere * spawnDistance;
+        }
     }
 }
