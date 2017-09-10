@@ -51,8 +51,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff932a53805ad2478f2072897977cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeBetweenSpawns: 0.1
-  _velocity: 15
+  _timeBetweenSpawns:
+    min: 0.05
+    max: 0.15
+  _scale:
+    min: 0.25
+    max: 1
+  _randomVelocity:
+    min: 0
+    max: 3
+  _angularVelocity:
+    min: 0
+    max: 4
+  _velocity: 17
   _stuffPrefabs:
   - {fileID: 114705384232209956, guid: 1beb922dcd4a2e040b2c76376fb8f951, type: 2}
   - {fileID: 114938017316124806, guid: c3bcf5b6682843f45a11ee636c139e40, type: 2}
+  - {fileID: 114209016569696570, guid: 4d8998e9a755f9d4dbb9dac12a98710d, type: 2}
+  - {fileID: 114342720241141844, guid: cd891e7d4cebce947b0996a110b8ec76, type: 2}
