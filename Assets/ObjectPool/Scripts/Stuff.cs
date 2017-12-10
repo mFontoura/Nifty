@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ObjectPool.Scripts {
+	
 	[RequireComponent(typeof(Rigidbody))]
-	public class Stuff : MonoBehaviour
+	public class Stuff : PooledObject
 	{
 		
 		private MeshRenderer[] _meshRenderers;
 
 		public Rigidbody Body{ get; private set; }
+
+		private void OnEnable(){
+			SceneManager.sceneLoaded += OnLevelWasLoaded;
+		}
 
 		private void Awake(){
 			Body = GetComponent<Rigidbody>();
@@ -16,7 +22,7 @@ namespace ObjectPool.Scripts {
 
 		private void OnTriggerEnter(Collider other){
 			if (other.CompareTag("Kill Zone")){
-				Destroy(gameObject);
+				ReturnToPool();
 			}
 		}
 		
@@ -24,6 +30,10 @@ namespace ObjectPool.Scripts {
 			for (int i = 0; i < _meshRenderers.Length; i++) {
 				_meshRenderers[i].material = m;
 			}
+		}
+
+		private void OnLevelWasLoaded(Scene scene, LoadSceneMode mode){
+			ReturnToPool();
 		}
 	}
 }
