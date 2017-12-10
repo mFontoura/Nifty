@@ -12,7 +12,7 @@ namespace ObjectPool.Scripts {
 		public Rigidbody Body{ get; private set; }
 
 		private void OnEnable(){
-			SceneManager.sceneLoaded += OnLevelWasLoaded;
+			SceneManager.sceneLoaded += OnLevelLoaded;
 		}
 
 		private void Awake(){
@@ -32,7 +32,7 @@ namespace ObjectPool.Scripts {
 			}
 		}
 
-		private void OnLevelWasLoaded(Scene scene, LoadSceneMode mode){
+		private void OnLevelLoaded(Scene scene, LoadSceneMode mode){
 			ReturnToPool();
 		}
 	}
