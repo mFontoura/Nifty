@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
@@ -16,20 +15,27 @@ public class Grid : MonoBehaviour
     }
 
     private IEnumerator Generate(){
-        WaitForSeconds wait = new WaitForSeconds(0.03f);
+        WaitForSeconds wait = new WaitForSeconds(0.02f);
         
         GetComponent<MeshFilter>().mesh = _mesh = new Mesh();
         _mesh.name = "Procedural Grid";
         
         _vertices = new Vector3[(_xSize+1)*( _ySize+1)];
+        Vector2[] uv = new Vector2[_vertices.Length];
+        Vector4[] tangents = new Vector4[_vertices.Length];
+        Vector4 tangent = new Vector4(1f,0f,0f,-1f);
         for (int i = 0, y = 0; y <= _ySize; y++){
             for (int x = 0; x <= _xSize; x++, i++){
                 _vertices[i] = new Vector3(x,y);
-                
+                uv[i] = new Vector2((float)x/_xSize, (float)y/_ySize);
+                tangents[i] = tangent;
+                yield return wait;
             }
         }
         
         _mesh.vertices = _vertices;
+        _mesh.uv = uv;
+        _mesh.tangents = tangents;
         
         int[] triangles = new int[_xSize * _ySize * 6];
         for (int ti = 0, vi = 0, y = 0; y < _ySize; y++, vi++){
@@ -51,6 +57,8 @@ public class Grid : MonoBehaviour
     }
 
     private void OnDrawGizmos(){
+        
+        //because it gives error if not on play mode
         if (_vertices == null){
             return;
         }
