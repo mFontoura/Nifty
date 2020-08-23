@@ -4,8 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class Grid : MonoBehaviour
 {
-    [SerializeField]
-    private int _xSize, _ySize;
+    [SerializeField] private int _xSize = 10;
+    [SerializeField] private int _ySize = 5;
 
     private Vector3[] _vertices;
     private Mesh _mesh;

@@ -16,8 +16,8 @@ namespace ObjectPool.Scripts {
         }
 
         [SerializeField] private FloatRange _timeBetweenSpawns, _scale, _randomVelocity, _angularVelocity;
-        [SerializeField] private float _velocity;
-        [SerializeField] private Stuff[] _stuffPrefabs;
+        [SerializeField] private float _velocity = 17;
+        [SerializeField] private Stuff[] _stuffPrefabs = null;
         
         private Material _stuffMaterial;
         private float _timeSinceLastSpawn;

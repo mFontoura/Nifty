@@ -21,7 +21,7 @@ namespace Atomic_Nucleus.Scripts {
         }
 
         [SerializeField] 
-        private FPSColor[] _coloring;
+        private FPSColor[] _coloring = null;
     
         private FPSCounter _fpsCounter;
     

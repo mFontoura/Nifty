@@ -32,7 +32,7 @@ namespace ObjectPool.Scripts {
 			}
 		}
 
-		private void OnLevelWasLoaded(Scene scene, LoadSceneMode mode){
+		private void OnLevelWasLoaded(Scene scene, LoadSceneMode loadSceneMode){
 			ReturnToPool();
 		}
 	}

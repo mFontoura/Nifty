@@ -4,11 +4,11 @@ namespace ObjectPool.Scripts {
     public class StuffSpawnerRing : MonoBehaviour
     {
 
-        [SerializeField] private int _numberOfSpawners;
-        [SerializeField] private float _radius;
-        [SerializeField] private float _tiltAngle;
-        [SerializeField] private StuffSpawner _spawnerPrefab;
-        [SerializeField] private Material[] _stuffMaterials;
+        [SerializeField] private int _numberOfSpawners = 20;
+        [SerializeField] private float _radius = 25;
+        [SerializeField] private float _tiltAngle = -20;
+        [SerializeField] private StuffSpawner _spawnerPrefab = null;
+        [SerializeField] private Material[] _stuffMaterials = null;
 
         private void Awake(){
             for (int i = 0; i < _numberOfSpawners; i++){
